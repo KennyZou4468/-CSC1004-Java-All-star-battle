@@ -35,6 +35,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class TankApp extends GameApplication {
     private  Entity tankEntity;
     private Entity creeperEntity;
+    private  Entity creepeerEntity;
     private  Entity peopleEntity;
     private boolean ismoving1;
     private boolean ismoving2;
@@ -56,6 +57,7 @@ public class TankApp extends GameApplication {
         gameSettings.setTitle("TANK");
         gameSettings.setVersion("0.1");
         gameSettings.setAppIcon("joker.jpg");
+        gameSettings.setMainMenuEnabled(true);
 
     }
     //预先加载资源
@@ -121,6 +123,11 @@ public class TankApp extends GameApplication {
         FXGL.getGameWorld().addEntity(creeperEntity);
         Point2D center2=tankEntity.getCenter();
 
+        creepeerEntity=FXGL.entityBuilder()
+                .view("creper.png")
+                .bbox(BoundingShape.box(200,200))
+                .build();
+        FXGL.getGameWorld().addEntity(creepeerEntity);
         creatEnemy();
     }
 
