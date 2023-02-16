@@ -8,11 +8,11 @@
     <artifactId>tank</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
+ <!--   <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    </properties>-->
 
     <dependencies>
      <dependency>
@@ -44,7 +44,7 @@
                     <noManPages>true</noManPages>
                     <launcher>tank</launcher>
                     <jlinkImageName>tank</jlinkImageName>
-                    <jlinkZipName>tank</jlinkZipName>
+                    <jlinkZipName>tankZip</jlinkZipName>
                     <mainClass>com.kenny.tank.TankApp</mainClass>
                 </configuration>
             </plugin>

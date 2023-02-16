@@ -1,5 +1,5 @@
 package com.kenny.tank;
 
 public enum Gametype {
-    BUllet,ENEMY
+    BUllet,ENEMY,PLAYER1,PLAYER2,CASEBLOCK,LUCKYBLOCK,STONEBLOCK,UNBREAKABLEWALL,WALL
 }
