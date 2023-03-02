@@ -1,17 +1,69 @@
 package com.kenny.tank.components;
 
+import com.almasb.fxgl.core.util.LazyValue;
+import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.EntityGroup;
+import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.time.LocalTimer;
 import com.kenny.tank.Config;
+import com.kenny.tank.Dir;
+import com.kenny.tank.Gametype;
+import javafx.util.Duration;
+
+import java.util.List;
 
 public class TankComponent extends Component {
 
     private boolean ismoving2=false;
     private double distance;
+    private Dir moveDir2=Dir.RIGHT;
+    private LocalTimer TankTimer;
+
+    public Dir getMoveDir2() {
+        return moveDir2;
+    }
+
+    @Override
+    public void onAdded() {
+        TankTimer=FXGL.newLocalTimer();
+    }
+
+    private LazyValue<EntityGroup>entityGroupLazyValue=new LazyValue<>(()->FXGL.getGameWorld().getGroup
+            (Gametype.BORDER
+            ,Gametype.CASEBLOCK
+            ,Gametype.LUCKYBLOCK
+            ,Gametype.STONEBLOCK
+            ,Gametype.UNBREAKABLEWALL
+            ,Gametype.WALL
+            ,Gametype.PLAYER2
+            ,Gametype.ENEMY));
 
     @Override
     public void onUpdate(double tpf) {
         ismoving2=false;
         distance=tpf * Config.SpeedTank;
+    }
+    public void move(){
+        int len=(int) distance;
+        List<Entity> blockList= entityGroupLazyValue.get().getEntitiesCopy();
+        blockList.remove(entity);
+        int size=blockList.size();
+        boolean isCollision=false;
+        for (int i = 0; i < len; i++) {
+            entity.translate(moveDir2.getVector().getX(),moveDir2.getVector().getY());
+           for(int j=0;j<size;j++){
+              if( entity.isColliding(blockList.get(j))){
+                  isCollision=true;
+                  break;
+              }
+           }
+           if(isCollision){
+               entity.translate(-moveDir2.getVector().getX(),-moveDir2.getVector().getY());
+               break;
+           }
+        }
     }
 
     public  void moveUp(){
@@ -19,8 +71,9 @@ public class TankComponent extends Component {
             return;
         }
         ismoving2=true;
-        entity.setRotation(270);
-        entity.translate(0,-distance);
+        entity.setRotation(-90);
+        moveDir2=Dir.UP;
+        move();
 
     }
     public  void moveDown(){
@@ -29,7 +82,9 @@ public class TankComponent extends Component {
         }
         ismoving2=true;
         entity.setRotation(90);
-        entity.translate(0,distance);
+        moveDir2=Dir.DOWN;
+        move();
+
 
     }
     public  void moveRight(){
@@ -38,7 +93,9 @@ public class TankComponent extends Component {
         }
         ismoving2=true;
         entity.setRotation(0);
-        entity.translate(distance,0);
+        moveDir2=Dir.RIGHT;
+        move();
+
 
     }
     public  void moveLeft(){
@@ -47,12 +104,19 @@ public class TankComponent extends Component {
         }
         ismoving2=true;
         entity.setRotation(180);
-        entity.translate(-distance,0);
+        moveDir2=Dir.LEFT;
+        move();
 
     }
     public  void shoot(){
-
-
+    if(TankTimer.elapsed(Config.Tankshoot)){
+        FXGL.spawn("bullet",new SpawnData(
+                entity.getCenter().subtract(18,25/2.0)
+        ).put("dir",moveDir2.getVector())
+                        .put("ownerType",entity.getType())
+        );
+        TankTimer.capture();
+        }
     }
-
 }
+
