@@ -1,6 +1,8 @@
 package com.kenny.tank;
 
+import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.EffectComponent;
 import com.almasb.fxgl.dsl.components.ExpireCleanComponent;
 import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
@@ -13,7 +15,9 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
 import com.almasb.fxgl.ui.ProgressBar;
+import com.kenny.tank.components.ChickenComponent;
 import com.kenny.tank.components.EnemyComponent;
+import com.kenny.tank.components.LevelComponent;
 import com.kenny.tank.components.TankComponent;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
@@ -28,12 +32,15 @@ public class TankFactory implements EntityFactory {
         return FXGL.entityBuilder(data)
                 //设置外观和大小
                 .type(Gametype.ENEMY)
+                .with(new EffectComponent())
                 .with(new TankComponent())
                 .with(new EnemyComponent())
                 .viewWithBBox("Enemytank.png")
                 .with(new CollidableComponent(true))
+                .with(new LevelComponent())
                 .build();
     }
+
     @Spawns("creper")
            public Entity player1(SpawnData data) {
         return FXGL.entityBuilder(data)
@@ -42,6 +49,47 @@ public class TankFactory implements EntityFactory {
                 .with(new TankComponent())
                 .viewWithBBox("element/CrepeerFinal.png")
                 .with(new CollidableComponent(true))
+                .build();
+    }
+    @Spawns("Chicken")
+    public Entity newChicken(SpawnData data) {
+        return FXGL.entityBuilder(data)
+                //设置外观和大小
+                .type(Gametype.ENEMY)
+                .with(new EffectComponent())
+                .with(new TankComponent())
+                .with(new ChickenComponent())
+                .with(new CollidableComponent(true))
+                .build();
+    }
+    @Spawns("Boss1")
+    public Entity newBoss(SpawnData data){
+        HealthIntComponent HPComponent=new HealthIntComponent(20);
+        HPComponent.setValue(20);
+        ProgressBar hp=new ProgressBar(false);
+        hp.setLabelVisible(false);
+        hp.maxValueProperty().bind(HPComponent.maxValueProperty());
+        hp.currentValueProperty().bind(HPComponent.valueProperty());
+        hp.setWidth(288);
+        hp.setTranslateY(0);
+        hp.setFill(Color.LIGHTGREEN);
+        hp.currentValueProperty().addListener((ob,ov,nv)->{
+            if(nv.intValue()<6){
+                hp.setFill(Color.RED);
+            } else if (nv.intValue()<13) {
+                hp.setFill(Color.YELLOW);
+            }else{
+                hp.setFill(Color.LIGHTGREEN);
+            }
+
+        });
+        return FXGL.entityBuilder(data)
+                //设置外观和大小
+                .type(Gametype.BOSS)
+                .viewWithBBox("BossTank.png")
+                .with(new CollidableComponent(true))
+                .view(hp)
+                .with(HPComponent)
                 .build();
     }
              @Spawns("Tank")
@@ -69,11 +117,14 @@ public class TankFactory implements EntityFactory {
             return FXGL.entityBuilder(data)
                     //设置外观和大小
                     .type(Gametype.PLAYER2)
+                    .with(new EffectComponent())
                     .with(new TankComponent())
                     .viewWithBBox("element/Tank.png")
                     .with(new CollidableComponent(true))
                     .view(hp)
+                    .with(new TankComponent())
                     .with(HPComponent)
+                    .with(new LevelComponent())
                     .zIndex(1)
                     .build();
     }
@@ -101,8 +152,8 @@ public class TankFactory implements EntityFactory {
     }
     @Spawns("Stoneblock")
     public Entity newStoneblock(SpawnData data){
-        HealthIntComponent HPComponent=new HealthIntComponent(2);
-        HPComponent.setValue(2);
+        HealthIntComponent HPComponent=new HealthIntComponent(3);
+        HPComponent.setValue(3);
         return FXGL.entityBuilder(data)
                 .type(Gametype.STONEBLOCK)
                 .bbox(BoundingShape.box(64,64))
@@ -114,18 +165,24 @@ public class TankFactory implements EntityFactory {
 
     @Spawns("Unbreakablewall")
     public Entity newUnbreakablewall(SpawnData data){
+        HealthIntComponent HPComponent=new HealthIntComponent(3);
+        HPComponent.setValue(3);
         return FXGL.entityBuilder(data)
                 .type(Gametype.UNBREAKABLEWALL)
                 .bbox(BoundingShape.box(64,64))
                 .collidable()
+                .with(HPComponent)
                 .neverUpdated()
                 .build();
     }
     @Spawns("Wall")
     public Entity newWall(SpawnData data){
+        HealthIntComponent HPComponent=new HealthIntComponent(2);
+        HPComponent.setValue(2);
         return FXGL.entityBuilder(data)
                 .type(Gametype.WALL)
                 .bbox(BoundingShape.box(64,64))
+                .with(HPComponent)
                 .collidable()
                 .build();
     }
@@ -143,7 +200,7 @@ public class TankFactory implements EntityFactory {
                 .type(Gametype.Green)
                 .bbox(BoundingShape.box(64,64))
                 .collidable()
-                .zIndex(1000)
+                .zIndex(10)
                 .neverUpdated()
                 .build();
     }
@@ -193,6 +250,7 @@ public class TankFactory implements EntityFactory {
         return FXGL.entityBuilder(data)
                 .view(at.play())
                 .with(new ExpireCleanComponent(Duration.seconds(0.4)))
+                .zIndex(1)
                 .build();
     }
     @Spawns("smallexplode")
@@ -202,9 +260,21 @@ public class TankFactory implements EntityFactory {
         return FXGL.entityBuilder(data)
                 .view(at.play())
                 .with(new ExpireCleanComponent(Duration.seconds(0.4)))
+                .zIndex(1)
                 .build();
     }
-
+    @Spawns("Props")
+    public Entity newProps(SpawnData data){
+       PropsType propsType= FXGLMath.random(PropsType.values()).get();
+       data.put("propsType",propsType);
+        return FXGL.entityBuilder(data)
+                .type(Gametype.PROPS)
+                .viewWithBBox("Props/"+propsType.toString()+".png")
+                .collidable()
+                .zIndex(12)
+                .build();
+            }
 
 
 }
+

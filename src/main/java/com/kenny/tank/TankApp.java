@@ -2,12 +2,18 @@ package com.kenny.tank;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.kenny.tank.collisions.*;
+import com.kenny.tank.components.LevelComponent;
 import com.kenny.tank.components.TankComponent;
+import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.input.KeyCode;
+import javafx.util.Duration;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -17,6 +23,7 @@ public class TankApp extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
+        gameSettings.setMainMenuEnabled(true);
         gameSettings.setWidth(32*64);
         gameSettings.setHeight(18*64);
         gameSettings.setTitle("All star battle");
@@ -45,10 +52,25 @@ public class TankApp extends GameApplication {
         //创建游戏实体工厂类
         getGameWorld().addEntityFactory(new TankFactory());
         setLevelFromMap("test.tmx");
-        player2=FXGL.spawn("Tank",64,64);
-        spawn("enemy1",720,720);
-        spawn("enemy1",180,960);
-
+        player2=FXGL.spawn("Tank",1900,1012);
+        //player2.getComponent(LevelComponent.class).Strongest();
+        spawn("enemy1",1604,825);
+        spawn("enemy1",540,408);
+        spawn("enemy1",1021,1050);
+        spawn("enemy1",925,96);
+        spawn("Chicken",1785,117);
+        spawn("Boss1",40,900);
+         run(()->{
+             Point2D b=FXGLMath.random(Config.Spawnenemy).get();
+            List<Entity> en= getGameWorld().getEntitiesInRange(new Rectangle2D(b.getX(),b.getY(),88,88));
+            List<Entity> entities=en.stream().filter(entity ->
+                    entity.isType(Gametype.PLAYER2)||
+                            entity.isType(Gametype.ENEMY)
+                    ).toList();
+            if(entities.isEmpty()){
+                spawn("enemy1",b);
+             }
+         }, Duration.seconds(4),1700);
     }
     //重写方法获取用户输入.进行移动
     @Override
@@ -84,12 +106,15 @@ public class TankApp extends GameApplication {
         BulletEnemy handler=new BulletEnemy();
         getPhysicsWorld().addCollisionHandler(handler);
         getPhysicsWorld().addCollisionHandler(new BulletPlayer());
-        getPhysicsWorld().addCollisionHandler(new BulletWall());
         getPhysicsWorld().addCollisionHandler(new BulletBullet());
         getPhysicsWorld().addCollisionHandler(new BulletBorder());
+        getPhysicsWorld().addCollisionHandler(new BulletWall());
         getPhysicsWorld().addCollisionHandler(new BulletUnbreakablewall());
         getPhysicsWorld().addCollisionHandler(new BulletStone());
         getPhysicsWorld().addCollisionHandler(new BulletCaseblock());
+        getPhysicsWorld().addCollisionHandler(new PropsPlayer());
+        getPhysicsWorld().addCollisionHandler(new BulletBoss());
+
     }
 
     //启动游戏

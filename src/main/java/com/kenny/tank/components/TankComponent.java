@@ -2,6 +2,8 @@ package com.kenny.tank.components;
 
 import com.almasb.fxgl.core.util.LazyValue;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.Effect;
+import com.almasb.fxgl.dsl.components.EffectComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityGroup;
 import com.almasb.fxgl.entity.SpawnData;
@@ -10,6 +12,7 @@ import com.almasb.fxgl.time.LocalTimer;
 import com.kenny.tank.Config;
 import com.kenny.tank.Dir;
 import com.kenny.tank.Gametype;
+import com.kenny.tank.effect.PortalEffect;
 import javafx.util.Duration;
 
 import java.util.List;
@@ -20,6 +23,7 @@ public class TankComponent extends Component {
     private double distance;
     private Dir moveDir2=Dir.RIGHT;
     private LocalTimer TankTimer;
+    private EffectComponent effectComponent;
 
     public Dir getMoveDir2() {
         return moveDir2;
@@ -39,6 +43,10 @@ public class TankComponent extends Component {
             ,Gametype.WALL
             ,Gametype.PLAYER2
             ,Gametype.ENEMY));
+    private LazyValue<EntityGroup>entityGroup_PortionLazyValue=new LazyValue<>(()->FXGL.getGameWorld().getGroup
+            (Gametype.BORDER
+                    ,Gametype.LUCKYBLOCK,Gametype.PLAYER2
+                    ,Gametype.ENEMY));
 
     @Override
     public void onUpdate(double tpf) {
@@ -47,7 +55,14 @@ public class TankComponent extends Component {
     }
     public void move(){
         int len=(int) distance;
-        List<Entity> blockList= entityGroupLazyValue.get().getEntitiesCopy();
+        boolean a= effectComponent.hasEffect(PortalEffect.class);
+        List<Entity> blockList;
+        if(a){
+            blockList=entityGroup_PortionLazyValue.get().getEntitiesCopy();
+        }
+        else {
+            blockList=entityGroupLazyValue.get().getEntitiesCopy();
+        }
         blockList.remove(entity);
         int size=blockList.size();
         boolean isCollision=false;
@@ -95,8 +110,6 @@ public class TankComponent extends Component {
         entity.setRotation(0);
         moveDir2=Dir.RIGHT;
         move();
-
-
     }
     public  void moveLeft(){
         if(ismoving2){
@@ -108,15 +121,56 @@ public class TankComponent extends Component {
         move();
 
     }
+    public  void moveUp1(){
+        if(ismoving2){
+            return;
+        }
+        ismoving2=true;
+        moveDir2=Dir.UP;
+        move();
+
+    }
+    public  void moveDown1(){
+        if(ismoving2){
+            return;
+        }
+        ismoving2=true;
+        moveDir2=Dir.DOWN;
+        move();
+
+
+    }
+    public  void moveRight1(){
+        if(ismoving2){
+            return;
+        }
+        ismoving2=true;
+        moveDir2=Dir.RIGHT;
+        move();
+
+
+    }
+    public  void moveLeft1(){
+        if(ismoving2){
+            return;
+        }
+        ismoving2=true;
+        moveDir2=Dir.LEFT;
+        move();
+    }
+
+
     public  void shoot(){
     if(TankTimer.elapsed(Config.Tankshoot)){
         FXGL.spawn("bullet",new SpawnData(
                 entity.getCenter().subtract(18,25/2.0)
         ).put("dir",moveDir2.getVector())
                         .put("ownerType",entity.getType())
+                .put("level",entity.getComponent(LevelComponent.class).getValue())
         );
         TankTimer.capture();
         }
     }
+
 }
 

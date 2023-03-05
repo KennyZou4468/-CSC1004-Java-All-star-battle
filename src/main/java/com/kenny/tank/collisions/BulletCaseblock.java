@@ -13,10 +13,10 @@ public class BulletCaseblock extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity caseblock) {
+                      caseblock.removeFromWorld();
         spawn("smallexplode",caseblock.getCenter()
                 .subtract(35,80));
         bullet.removeFromWorld();
-        caseblock.removeFromWorld();
     }
 
 }

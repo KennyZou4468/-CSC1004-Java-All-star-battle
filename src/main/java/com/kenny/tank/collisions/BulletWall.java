@@ -1,5 +1,6 @@
 package com.kenny.tank.collisions;
 
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.kenny.tank.Gametype;
@@ -13,10 +14,18 @@ public class BulletWall extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity wall) {
+        HealthIntComponent HP=wall.getComponent(HealthIntComponent.class);
+        HP.damage(1);
+        Gametype b1=bullet.getObject("ownerType");
+        if(HP.isZero()){
+            if(b1==Gametype.PLAYER2){
+                wall.removeFromWorld();
+            }
+        }
         spawn("smallexplode",wall.getCenter()
                 .subtract(35,80));
         bullet.removeFromWorld();
-        wall.removeFromWorld();
+
     }
 
 }

@@ -56,6 +56,7 @@ public class EnemyComponent extends Component {
                   entity.getCenter().subtract(6,14/2.0)
           ).put("dir",tankComponent.getMoveDir2().getVector())
                           .put("ownerType",entity.getType())
+                          .put("level",entity.getComponent(LevelComponent.class).getValue())
           );
           EnemyTimer.capture();
          }
