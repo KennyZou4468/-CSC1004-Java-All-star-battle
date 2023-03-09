@@ -7,7 +7,7 @@ public interface Config {
     int SpeedTank=380;
     int SpeedBullet=750;
     int Speedenemybullet=1000;
-    Duration Tankshoot= Duration.seconds(2);
+    Duration Tankshoot= Duration.seconds(1.5);
     Duration enemy2shooot=Duration.seconds(0.75);
 
     int Tank_Max_Level=1;
@@ -20,5 +20,6 @@ public interface Config {
             new Point2D(925,96),
     };
 
+    int Max_Level=2;
 
 }

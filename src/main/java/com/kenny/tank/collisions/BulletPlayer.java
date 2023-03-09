@@ -27,9 +27,6 @@ public class BulletPlayer extends CollisionHandler {
             HP.damage(1);
             spawn("explode", PLAYER2.getCenter()
                     .subtract(80, 100));
-            if(HP.getValue()<=3){
-
-            }
             if (HP.isZero()) {
                 PLAYER2.removeFromWorld();
                 spawn("explode", PLAYER2.getCenter()

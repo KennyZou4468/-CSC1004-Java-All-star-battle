@@ -64,8 +64,8 @@ public class TankFactory implements EntityFactory {
     }
     @Spawns("Boss1")
     public Entity newBoss(SpawnData data){
-        HealthIntComponent HPComponent=new HealthIntComponent(20);
-        HPComponent.setValue(20);
+        HealthIntComponent HPComponent=new HealthIntComponent(13);
+        HPComponent.setValue(13);
         ProgressBar hp=new ProgressBar(false);
         hp.setLabelVisible(false);
         hp.maxValueProperty().bind(HPComponent.maxValueProperty());
@@ -74,15 +74,16 @@ public class TankFactory implements EntityFactory {
         hp.setTranslateY(0);
         hp.setFill(Color.LIGHTGREEN);
         hp.currentValueProperty().addListener((ob,ov,nv)->{
-            if(nv.intValue()<6){
+            if(nv.intValue()<3){
                 hp.setFill(Color.RED);
-            } else if (nv.intValue()<13) {
+            } else if (nv.intValue()<7) {
                 hp.setFill(Color.YELLOW);
             }else{
                 hp.setFill(Color.LIGHTGREEN);
             }
 
-        });
+        }
+        );
         return FXGL.entityBuilder(data)
                 //设置外观和大小
                 .type(Gametype.BOSS)
