@@ -12,12 +12,14 @@ import static com.almasb.fxgl.dsl.FXGL.inc;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class BulletEnemy extends CollisionHandler {
+    //子弹和敌人 的碰撞
               public BulletEnemy(){
                   super(Gametype.BUllet,Gametype.ENEMY);
               }
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity enemy) {
+                  //检查是否有无敌效果
                   boolean a=enemy.getComponent(EffectComponent.class).hasEffect(GODEffect.class);
        if(a){
            bullet.removeFromWorld();
@@ -27,6 +29,7 @@ public class BulletEnemy extends CollisionHandler {
                .subtract(80, 100));
            bullet.removeFromWorld();
            enemy.removeFromWorld();
+            //得分加一
            inc("score",1);
            spawn("Props",
                    FXGLMath.randomPoint(new Rectangle2D(

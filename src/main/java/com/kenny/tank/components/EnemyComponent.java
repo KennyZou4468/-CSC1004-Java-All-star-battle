@@ -15,6 +15,7 @@ import com.kenny.tank.Gametype;
 import java.util.List;
 
 public class EnemyComponent extends Component {
+// 敌人组件，移动继承至坦克组件
     private  TankComponent tankComponent;
     private LocalTimer EnemyTimer;
     private Dir move_enemydir=Dir.RIGHT;
@@ -55,7 +56,9 @@ public class EnemyComponent extends Component {
           FXGL.spawn("Enemybullet",new SpawnData(
                   entity.getCenter().subtract(6,14/2.0)
           ).put("dir",tankComponent.getMoveDir2().getVector())
+                  //传入实体类型
                           .put("ownerType",entity.getType())
+                  //传入等级
                           .put("level",entity.getComponent(LevelComponent.class).getValue())
           );
           EnemyTimer.capture();

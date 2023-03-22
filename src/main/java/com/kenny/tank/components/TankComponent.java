@@ -42,7 +42,8 @@ public class TankComponent extends Component {
             ,Gametype.UNBREAKABLEWALL
             ,Gametype.WALL
             ,Gametype.PLAYER2
-            ,Gametype.ENEMY));
+            ,Gametype.ENEMY
+            ,Gametype.CHICKEN));
     private LazyValue<EntityGroup>entityGroup_PortionLazyValue=new LazyValue<>(()->FXGL.getGameWorld().getGroup
             (Gametype.BORDER
                     ,Gametype.LUCKYBLOCK,Gametype.PLAYER2

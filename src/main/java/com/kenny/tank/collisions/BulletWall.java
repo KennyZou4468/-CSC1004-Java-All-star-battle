@@ -8,12 +8,14 @@ import com.kenny.tank.Gametype;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class BulletWall extends CollisionHandler {
+    //子弹和墙的碰撞
               public BulletWall(){
                   super(Gametype.BUllet,Gametype.WALL);
               }
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity wall) {
+                  //需要打多次才能摧毁
         HealthIntComponent HP=wall.getComponent(HealthIntComponent.class);
         HP.damage(1);
         Gametype b1=bullet.getObject("ownerType");

@@ -7,6 +7,7 @@ import com.kenny.tank.Gametype;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class BulletCaseblock extends CollisionHandler {
+    //子弹和箱子的碰撞
               public BulletCaseblock(){
                   super(Gametype.BUllet,Gametype.CASEBLOCK);
               }

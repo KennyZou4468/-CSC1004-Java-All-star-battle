@@ -10,12 +10,14 @@ import com.kenny.tank.components.LevelComponent;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class BulletUnbreakablewall extends CollisionHandler {
+    //子弹和坚固的墙的碰撞
               public BulletUnbreakablewall(){
                   super(Gametype.BUllet,Gametype.UNBREAKABLEWALL);
               }
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity unbreakablewall) {
+                  //需提升等级才能摧毁，同样需要打多次
         HealthIntComponent HP=unbreakablewall.getComponent(HealthIntComponent.class);
                   int level= bullet.getInt("level");
         spawn("smallexplode",unbreakablewall.getCenter()

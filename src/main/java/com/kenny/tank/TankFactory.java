@@ -55,7 +55,18 @@ public class TankFactory implements EntityFactory {
     public Entity newChicken(SpawnData data) {
         return FXGL.entityBuilder(data)
                 //设置外观和大小
-                .type(Gametype.ENEMY)
+                .type(Gametype.CHICKEN)
+                .with(new EffectComponent())
+                .with(new TankComponent())
+                .with(new ChickenComponent())
+                .with(new CollidableComponent(true))
+                .build();
+    }
+    @Spawns("ChickenEnemy")
+    public Entity newChickenEnemy(SpawnData data) {
+        return FXGL.entityBuilder(data)
+                //设置外观和大小
+                .type(Gametype.CHICKENENEMY)
                 .with(new EffectComponent())
                 .with(new TankComponent())
                 .with(new ChickenComponent())
@@ -268,11 +279,15 @@ public class TankFactory implements EntityFactory {
     public Entity newProps(SpawnData data){
        PropsType propsType= FXGLMath.random(PropsType.values()).get();
        data.put("propsType",propsType);
-        return FXGL.entityBuilder(data)
+     //  AnimationChannel ac=new AnimationChannel(FXGL.image("Props/"+data.<PropsType>get("propsType")+".png"),1,64,64,Duration.seconds(.5),0,1);
+       //AnimatedTexture animatedTexture=new AnimatedTexture(ac);
+       return FXGL.entityBuilder(data)
                 .type(Gametype.PROPS)
                 .viewWithBBox("Props/"+propsType.toString()+".png")
+               .with(new ExpireCleanComponent(Duration.seconds(15)))
                 .collidable()
                 .zIndex(12)
+               // FXGL.runOnce(animatedTexture::loop,Duration.seconds(3));
                 .build();
             }
 

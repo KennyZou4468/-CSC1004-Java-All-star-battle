@@ -16,6 +16,7 @@ import com.kenny.tank.ui.FailedScene;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class PropsEnemy extends CollisionHandler {
+// 敌人获得道具
 
     public PropsEnemy() {
         super(Gametype.PROPS,Gametype.ENEMY);
@@ -25,6 +26,7 @@ public class PropsEnemy extends CollisionHandler {
     protected void onCollisionBegin(Entity props, Entity enemy) {
         PropsType p1=props.getObject("propsType");
         switch (p1){
+            //升级道具，BOSS加血
             case UPGRADE -> {
              FXGL.getGameWorld().getEntitiesByType(Gametype.BOSS).forEach(boss->{
                  if(boss.isActive()){
@@ -34,7 +36,8 @@ public class PropsEnemy extends CollisionHandler {
              });
             }
             case LUCKYBLOCK -> {
-                if(FXGLMath.random(0,1)<0.5){
+                //幸运方块，可能产生敌人也可能给玩家恢复血量
+                if(FXGLMath.random(0,1)<0.65){
                     FXGL.spawn("enemy1",720,720);
                 }else {
                     FXGL.getGameWorld().getEntitiesByType(Gametype.PLAYER2).forEach(player->{
@@ -46,7 +49,7 @@ public class PropsEnemy extends CollisionHandler {
                 }
             }
             case HEART -> {
-
+//减少玩家血量（可能突然死亡）
                 FXGL.getGameWorld().getEntitiesByType(Gametype.PLAYER2).forEach(player->{
                     if(player.isActive()){
                         HealthIntComponent hp=player.getComponent(HealthIntComponent.class);
@@ -61,9 +64,11 @@ public class PropsEnemy extends CollisionHandler {
                 });
             }
             case PORTAL -> {
+// 变身穿墙坦克
                     enemy.getComponent(EffectComponent.class).startEffect(new PortalEffect());
             }
             case GOD -> {
+//无敌效果
                    enemy.getComponent(EffectComponent.class).startEffect(new GODEffect());
             }
         }

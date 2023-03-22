@@ -1,5 +1,7 @@
 package com.kenny.tank;
 
+import com.almasb.fxgl.achievement.Achievement;
+import com.almasb.fxgl.achievement.AchievementEvent;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
@@ -15,6 +17,7 @@ import com.kenny.tank.collisions.*;
 import com.kenny.tank.components.LevelComponent;
 import com.kenny.tank.components.TankComponent;
 import com.kenny.tank.ui.*;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.input.KeyCode;
@@ -23,7 +26,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
-
 import static com.almasb.fxgl.dsl.FXGL.*;
 //基础设置
 public class TankApp extends GameApplication {
@@ -41,6 +43,8 @@ public class TankApp extends GameApplication {
         gameSettings.setAppIcon("joker.jpg");
         gameSettings.getCSSList().add("tank.css");
         gameSettings.setMainMenuEnabled(true);
+        //gameSettings.getAchievements().add(new Achievement("Double kill","kill 2 enemy","score",2));
+
         gameSettings.setSceneFactory(new SceneFactory(){
             @Override
             public StartupScene newStartup(int width, int height) {
@@ -98,6 +102,24 @@ public class TankApp extends GameApplication {
         }, Duration.seconds(4),170);
 
     }
+    public void StartHiddenLevel(){
+        set("score",0);
+        setLevelFromMap("Chicken.tmx");
+        spawn("ChickenEnemy",1785,117);
+        player2=FXGL.spawn("Tank",1900,1012);
+        run(()->{
+            Point2D b=FXGLMath.random(Config.Spawnenemy).get();
+            List<Entity> en= getGameWorld().getEntitiesInRange(new Rectangle2D(b.getX(),b.getY(),88,88));
+            List<Entity> entities=en.stream().filter(entity ->
+                    entity.isType(Gametype.PLAYER2)||
+                            entity.isType(Gametype.CHICKENENEMY)
+            ).toList();
+            if(entities.isEmpty()){
+                spawn("ChickenEnemy",b);
+            }
+        }, Duration.seconds(2),170);
+    }
+
     @Override
     protected void initGame() {
         //创建游戏实体工厂类
@@ -154,6 +176,7 @@ public class TankApp extends GameApplication {
         getPhysicsWorld().addCollisionHandler(new PropsPlayer());
         getPhysicsWorld().addCollisionHandler(new BulletBoss());
         getPhysicsWorld().addCollisionHandler(new PropsEnemy());
+        getPhysicsWorld().addCollisionHandler(new BulletChicken());
 
     }
 

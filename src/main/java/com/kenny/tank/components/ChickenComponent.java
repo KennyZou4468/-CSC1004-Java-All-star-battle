@@ -11,6 +11,7 @@ import com.kenny.tank.Dir;
 import javafx.util.Duration;
 
 public class ChickenComponent extends Component {
+// 小鸡组件，进行序列帧的播放
     private TankComponent tankComponent;
     private Dir chickenmovedir=Dir.DOWN;
     private AnimationChannel acUP,acDOWN,acLEFT,acRIGHT;
@@ -31,6 +32,7 @@ public class ChickenComponent extends Component {
 
     @Override
     public void onUpdate(double tpf) {
+        //随机移动
          //distance=tpf*speed;
          if(FXGLMath.randomBoolean(0.015)){
              chickenmovedir=FXGLMath.random(Dir.values()).get();
@@ -60,6 +62,7 @@ public class ChickenComponent extends Component {
         }
     }
     public ChickenComponent(){
+// 拆分序列帧图
         acUP=new AnimationChannel(FXGL.image("Chicken.png"),
                 3,144/3,256/4, Duration.seconds(0.7),0,2);
 

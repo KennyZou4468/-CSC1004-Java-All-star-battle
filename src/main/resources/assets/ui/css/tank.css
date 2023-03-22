@@ -1,12 +1,12 @@
 .menu_button1{
     -fx-background-color: Gray;
-    -fx-pref-width: 120px;
+    -fx-pref-width: 240px;
     -fx-pref-height: 120px;
     -fx-font-size: 20px;
 }
 .menu_button2{
     -fx-background-color: Gray;
-    -fx-pref-width: 120px;
+    -fx-pref-width: 240px;
     -fx-pref-height: 120px;
     -fx-font-size: 20px;
 }

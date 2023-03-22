@@ -15,6 +15,7 @@ import javafx.util.Duration;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class BulletBoss extends CollisionHandler {
+    //子弹和BOSS坦克的碰撞
               public BulletBoss(){
                   super(Gametype.BUllet,Gametype.BOSS);
               }
@@ -24,9 +25,11 @@ public class BulletBoss extends CollisionHandler {
         Gametype b1 = bullet.getObject("ownerType");
         LazyValue<SuccessScene> successSceneLazyValue=new LazyValue<>(SuccessScene::new);
         HealthIntComponent HP = boss.getComponent(HealthIntComponent.class);
+    //敌人子弹给BOSS回血
         if(b1.equals(Gametype.ENEMY)){
             HP.restore(1);
         }else {
+            //玩家坦克造成伤害
             HP.damage(1);
             spawn("explode", boss.getCenter()
                     .subtract(80, 100));
@@ -35,12 +38,6 @@ public class BulletBoss extends CollisionHandler {
                 spawn("explode", boss.getCenter()
                         .subtract(80, 100));
                 FXGL.getSceneService().pushSubScene(successSceneLazyValue.get());
-               /* getip("score").addListener((ob, ov, nv) -> {
-                    if (nv.intValue() > 0) {
-                        FXGL.getSceneService().pushSubScene(successSceneLazyValue.get());
-                        ;
-                    }
-                });*/
             }
         }
             bullet.removeFromWorld();
