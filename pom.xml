@@ -47,7 +47,7 @@
                     <launcher>tank</launcher>
                     <jlinkImageName>tank</jlinkImageName>
                     <jlinkZipName>tankZip</jlinkZipName>
-                    <mainClass>com.kenny.tank.TankApp</mainClass>
+                    <mainClass>com.kenny.tank.AllStarBattleApp</mainClass>
                 </configuration>
             </plugin>
 

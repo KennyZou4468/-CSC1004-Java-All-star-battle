@@ -2,20 +2,23 @@ package com.kenny.tank.ui;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.scene.SubScene;
+import com.almasb.fxgl.time.LocalTimer;
 import com.kenny.tank.Config;
-import com.kenny.tank.TankApp;
+import com.kenny.tank.AllStarBattleApp;
 import javafx.animation.PauseTransition;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class SuccessScene extends SubScene {
+    private LocalTimer localTimer;
     private final  PauseTransition pt;
     private int score=FXGL.geti("score");
+
     public SuccessScene(){
+
         Text text=new Text("Score: "+score);
         text.setFill(Color.BLACK);
         text.setFont(Font.font(35));
@@ -28,7 +31,7 @@ public class SuccessScene extends SubScene {
             if(FXGL.geti("level")< Config.Max_Level){
                 FXGL.getSceneService().popSubScene();
                 FXGL.inc("level",1);
-                FXGL.<TankApp>getAppCast().StartLevel();
+                FXGL.<AllStarBattleApp>getAppCast().StartLevel();
             }else{
                 FXGL.getNotificationService().pushNotification("YOU SUCCEED!");
                 FXGL.getGameController().gotoMainMenu();

@@ -7,6 +7,8 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
+import com.almasb.fxgl.time.LocalTimer;
+import com.kenny.tank.Config;
 import com.kenny.tank.Dir;
 import javafx.util.Duration;
 
@@ -17,7 +19,7 @@ public class ChickenComponent extends Component {
     private AnimationChannel acUP,acDOWN,acLEFT,acRIGHT;
     private AnimatedTexture at;
     private static final int speed=150;
-   // private double distance;
+    private LocalTimer eggtimer;
 
     public Dir getchickenmovedir(){
         return chickenmovedir;
@@ -28,6 +30,7 @@ public class ChickenComponent extends Component {
     public void onAdded() {
          entity.getViewComponent().addChild(at);
          entity.getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(144/3,256/4)));
+        eggtimer=FXGL.newLocalTimer();
     }
 
     @Override
@@ -76,5 +79,4 @@ public class ChickenComponent extends Component {
                 3,144/3,256/4, Duration.seconds(0.7),3,5);
         at=new AnimatedTexture(acDOWN);
     }
-
 }

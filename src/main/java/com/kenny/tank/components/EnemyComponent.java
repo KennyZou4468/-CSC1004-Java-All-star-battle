@@ -37,8 +37,10 @@ public class EnemyComponent extends Component {
             case LEFT -> tankComponent.moveLeft();
             default -> {}
         }
-        if(FXGLMath.randomBoolean(0.04)){
-            enemyshoot();
+        if(!entity.isType(Gametype.SHARPEYE)) {
+            if (FXGLMath.randomBoolean(0.04)) {
+                enemyshoot();
+            }
         }
     }
 

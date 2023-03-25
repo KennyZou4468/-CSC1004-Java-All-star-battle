@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="321">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="395">
  <tileset firstgid="1" name="Combination" tilewidth="64" tileheight="64" tilecount="16" columns="4">
   <image source="Combination.png" width="288" height="288"/>
  </tileset>
@@ -8,5 +8,69 @@
   <object id="62" type="border" x="2046.67" y="-4" height="1152"/>
   <object id="63" type="border" x="0" y="1152" width="2048"/>
   <object id="64" type="border" x="0" y="0" height="1152"/>
+  <object id="321" type="Unbreakablewall" gid="1" x="1600" y="832" width="64" height="64"/>
+  <object id="322" type="Unbreakablewall" gid="1" x="512" y="384" width="64" height="64"/>
+  <object id="323" type="Unbreakablewall" gid="1" x="1024" y="1024" width="64" height="64"/>
+  <object id="333" type="Unbreakablewall" gid="1" x="1024" y="1024" width="64" height="64"/>
+  <object id="324" type="Unbreakablewall" gid="1" x="896" y="128" width="64" height="64"/>
+  <object id="325" type="Unbreakablewall" gid="1" x="896" y="192" width="64" height="64"/>
+  <object id="326" type="Unbreakablewall" gid="1" x="576" y="384" width="64" height="64"/>
+  <object id="327" type="Unbreakablewall" gid="1" x="576" y="448" width="64" height="64"/>
+  <object id="328" type="Unbreakablewall" gid="1" x="512" y="448" width="64" height="64"/>
+  <object id="329" type="Unbreakablewall" gid="1" x="1088" y="1024" width="64" height="64"/>
+  <object id="330" type="Unbreakablewall" gid="1" x="960" y="1024" width="64" height="64"/>
+  <object id="332" type="Unbreakablewall" gid="1" x="1024" y="960" width="64" height="64"/>
+  <object id="334" type="Unbreakablewall" gid="1" x="1024" y="1088" width="64" height="64"/>
+  <object id="335" type="Unbreakablewall" gid="1" x="1024" y="1152" width="64" height="64"/>
+  <object id="336" type="Unbreakablewall" gid="1" x="1600" y="896" width="64" height="64"/>
+  <object id="337" type="Unbreakablewall" gid="1" x="1728" y="256" width="64" height="64"/>
+  <object id="338" type="Unbreakablewall" gid="1" x="1728" y="320" width="64" height="64"/>
+  <object id="339" type="Unbreakablewall" gid="1" x="1728" y="384" width="64" height="64"/>
+  <object id="340" type="Unbreakablewall" gid="1" x="1728" y="448" width="64" height="64"/>
+  <object id="341" type="Unbreakablewall" gid="1" x="1728" y="512" width="64" height="64"/>
+  <object id="342" type="Unbreakablewall" gid="1" x="1728" y="576" width="64" height="64"/>
+  <object id="343" type="Unbreakablewall" gid="1" x="1728" y="640" width="64" height="64"/>
+  <object id="344" type="Unbreakablewall" gid="1" x="896" y="64" width="64" height="64"/>
+  <object id="345" type="Unbreakablewall" gid="1" x="896" y="256" width="64" height="64"/>
+  <object id="346" type="Unbreakablewall" gid="1" x="256" y="640" width="64" height="64"/>
+  <object id="347" type="Unbreakablewall" gid="1" x="256" y="704" width="64" height="64"/>
+  <object id="348" type="Unbreakablewall" gid="1" x="256" y="768" width="64" height="64"/>
+  <object id="349" type="Unbreakablewall" gid="1" x="256" y="832" width="64" height="64"/>
+  <object id="350" type="Unbreakablewall" gid="1" x="256" y="896" width="64" height="64"/>
+  <object id="360" type="Unbreakablewall" gid="1" x="320" y="960" width="64" height="64"/>
+  <object id="361" type="Unbreakablewall" gid="1" x="384" y="960" width="64" height="64"/>
+  <object id="362" type="Unbreakablewall" gid="1" x="448" y="960" width="64" height="64"/>
+  <object id="363" type="Unbreakablewall" gid="1" x="512" y="960" width="64" height="64"/>
+  <object id="364" type="Caseblock" gid="5" x="1536" y="256" width="64" height="64"/>
+  <object id="365" type="Caseblock" gid="5" x="1984" y="832" width="64" height="64"/>
+  <object id="394" type="Caseblock" gid="5" x="1984" y="832" width="64" height="64"/>
+  <object id="366" type="Caseblock" gid="5" x="1984" y="768" width="64" height="64"/>
+  <object id="367" type="Caseblock" gid="5" x="1856" y="704" width="64" height="64"/>
+  <object id="368" type="Caseblock" gid="5" x="1792" y="704" width="64" height="64"/>
+  <object id="369" type="Caseblock" gid="5" x="1920" y="768" width="64" height="64"/>
+  <object id="370" type="Caseblock" gid="5" x="1920" y="832" width="64" height="64"/>
+  <object id="393" type="Caseblock" gid="5" x="1920" y="832" width="64" height="64"/>
+  <object id="371" type="Caseblock" gid="5" x="1600" y="256" width="64" height="64"/>
+  <object id="372" type="Caseblock" gid="5" x="1664" y="256" width="64" height="64"/>
+  <object id="373" type="Caseblock" gid="5" x="192" y="128" width="64" height="64"/>
+  <object id="374" type="Caseblock" gid="5" x="192" y="192" width="64" height="64"/>
+  <object id="375" type="Caseblock" gid="5" x="128" y="192" width="64" height="64"/>
+  <object id="376" type="Caseblock" gid="5" x="128" y="256" width="64" height="64"/>
+  <object id="377" type="Caseblock" gid="5" x="256" y="128" width="64" height="64"/>
+  <object id="378" type="Caseblock" gid="5" x="1152" y="768" width="64" height="64"/>
+  <object id="379" type="Caseblock" gid="5" x="1152" y="640" width="64" height="64"/>
+  <object id="380" type="Caseblock" gid="5" x="1088" y="576" width="64" height="64"/>
+  <object id="381" type="Caseblock" gid="5" x="1088" y="704" width="64" height="64"/>
+  <object id="382" type="Caseblock" gid="5" x="1152" y="704" width="64" height="64"/>
+  <object id="383" type="Caseblock" gid="5" x="1216" y="576" width="64" height="64"/>
+  <object id="384" type="Caseblock" gid="5" x="1152" y="576" width="64" height="64"/>
+  <object id="385" type="Caseblock" gid="5" x="1088" y="640" width="64" height="64"/>
+  <object id="386" type="Caseblock" gid="5" x="1216" y="704" width="64" height="64"/>
+  <object id="387" type="Caseblock" gid="5" x="1216" y="768" width="64" height="64"/>
+  <object id="388" type="Caseblock" gid="5" x="1216" y="640" width="64" height="64"/>
+  <object id="389" type="Caseblock" gid="5" x="1280" y="640" width="64" height="64"/>
+  <object id="390" type="Caseblock" gid="5" x="512" y="1024" width="64" height="64"/>
+  <object id="391" type="Caseblock" gid="5" x="512" y="1088" width="64" height="64"/>
+  <object id="392" type="Caseblock" gid="5" x="512" y="1152" width="64" height="64"/>
  </objectgroup>
 </map>

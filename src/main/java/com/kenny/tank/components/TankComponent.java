@@ -43,7 +43,20 @@ public class TankComponent extends Component {
             ,Gametype.WALL
             ,Gametype.PLAYER2
             ,Gametype.ENEMY
-            ,Gametype.CHICKEN));
+            ,Gametype.CHICKEN
+            ,Gametype.CHICKENENEMY
+            ,Gametype.EGG));
+    private LazyValue<EntityGroup>chickenGroupLazyValue=new LazyValue<>(()->FXGL.getGameWorld().getGroup
+            (Gametype.BORDER
+                    ,Gametype.CASEBLOCK
+                    ,Gametype.LUCKYBLOCK
+                    ,Gametype.STONEBLOCK
+                    ,Gametype.UNBREAKABLEWALL
+                    ,Gametype.WALL
+                    ,Gametype.PLAYER2));
+    private LazyValue<EntityGroup>eyeGroupLazyValue=new LazyValue<>(()->FXGL.getGameWorld().getGroup
+            (Gametype.BORDER
+                   ));
     private LazyValue<EntityGroup>entityGroup_PortionLazyValue=new LazyValue<>(()->FXGL.getGameWorld().getGroup
             (Gametype.BORDER
                     ,Gametype.LUCKYBLOCK,Gametype.PLAYER2
@@ -58,11 +71,17 @@ public class TankComponent extends Component {
         int len=(int) distance;
         boolean a= effectComponent.hasEffect(PortalEffect.class);
         List<Entity> blockList;
-        if(a){
-            blockList=entityGroup_PortionLazyValue.get().getEntitiesCopy();
+        if(entity.isType(Gametype.CHICKENENEMY)){
+            blockList=chickenGroupLazyValue.get().getEntitiesCopy();
+        } else if (entity.isType(Gametype.ENEMYEYE)||entity.isType(Gametype.SHARPEYE)) {
+               blockList=eyeGroupLazyValue.get().getEntitiesCopy();
         }
         else {
-            blockList=entityGroupLazyValue.get().getEntitiesCopy();
+            if (a) {
+                blockList = entityGroup_PortionLazyValue.get().getEntitiesCopy();
+            } else {
+                blockList = entityGroupLazyValue.get().getEntitiesCopy();
+            }
         }
         blockList.remove(entity);
         int size=blockList.size();
