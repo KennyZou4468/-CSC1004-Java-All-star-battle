@@ -67,6 +67,7 @@ public class TankComponent extends Component {
         ismoving2=false;
         distance=tpf * Config.SpeedTank;
     }
+
     public void move(){
         int len=(int) distance;
         boolean a= effectComponent.hasEffect(PortalEffect.class);

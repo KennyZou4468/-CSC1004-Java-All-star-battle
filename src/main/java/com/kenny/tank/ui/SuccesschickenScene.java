@@ -28,7 +28,7 @@ public class SuccesschickenScene extends SubScene {
         getContentRoot().getChildren().add(pane);
         pt=new PauseTransition(Duration.seconds(1.5));
         pt.setOnFinished(event->{
-                FXGL.getNotificationService().pushNotification("YOU SUCCEED!");
+                FXGL.getNotificationService().pushNotification("恭喜你击败了坤坤！");
                 FXGL.getGameController().gotoMainMenu();
                 }
         );

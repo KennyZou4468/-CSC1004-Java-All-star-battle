@@ -26,14 +26,6 @@ public class PropsEnemy_forPeople extends CollisionHandler {
         PropsType p1=props.getObject("propsType");
         switch (p1){
             //升级道具，BOSS加血
-            case UPGRADE -> {
-             FXGL.getGameWorld().getEntitiesByType(Gametype.BOSS).forEach(boss->{
-                 if(boss.isActive()){
-                     HealthIntComponent hp=boss.getComponent(HealthIntComponent.class);
-                     hp.restore(1);
-                 }
-             });
-            }
             case LUCKYBLOCK -> {
                 //幸运方块，可能产生敌人也可能给玩家恢复血量
                 if(FXGLMath.random(0,1)<0.65){
@@ -42,7 +34,7 @@ public class PropsEnemy_forPeople extends CollisionHandler {
                     FXGL.getGameWorld().getEntitiesByType(Gametype.PEOPLE).forEach(player->{
                         if(player.isActive()){
                             HealthIntComponent hp=player.getComponent(HealthIntComponent.class);
-                            hp.restore(1);
+                            hp.restore(2);
                         }
                     });
                 }

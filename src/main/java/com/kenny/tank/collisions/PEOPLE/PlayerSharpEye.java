@@ -8,20 +8,22 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import com.kenny.tank.Gametype;
 import com.kenny.tank.effect.GODEffect;
 import com.kenny.tank.ui.FailedScene;
+import com.kenny.tank.ui.Main_menu;
 
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class PlayerSharpEye extends CollisionHandler {
+    private Main_menu mainMenu=new Main_menu();
     //恶魔之眼和玩家的碰撞
               public PlayerSharpEye(){
-                  super(Gametype.SHARPEYE,Gametype.PLAYER2);
+                  super(Gametype.SHARPEYE,Gametype.PEOPLE);
               }
 
     @Override
     protected void onCollisionBegin(Entity sharpeye, Entity PLAYER2) {
                   //检查是否有无敌效果
         boolean a = PLAYER2.getComponent(EffectComponent.class).hasEffect(GODEffect.class);
-        if (!a) {
+        if (!a&& !mainMenu.IsIkun()) {
             //减少血量
             HealthIntComponent HP = PLAYER2.getComponent(HealthIntComponent.class);
             HP.damage(1);

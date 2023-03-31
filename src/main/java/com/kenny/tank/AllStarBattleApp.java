@@ -96,7 +96,7 @@ public class AllStarBattleApp extends GameApplication {
             if(entities.isEmpty()){
                 spawn("enemy1",b);
             }
-        }, Duration.seconds(4),170);
+        }, Duration.seconds(5),70);
 
     }
     public void StartHiddenLevel(){
@@ -114,7 +114,7 @@ public class AllStarBattleApp extends GameApplication {
             if(entities.isEmpty()){
                 spawn("ChickenEnemy",b);
             }
-        }, Duration.seconds(2),170);
+        }, Duration.seconds(4),70);
         runOnce(()->{
             LazyValue<SuccesschickenScene> successchickenSceneLazyValue = new LazyValue<>(SuccesschickenScene::new);
             if (player2.isActive()) {
@@ -123,7 +123,7 @@ public class AllStarBattleApp extends GameApplication {
             else {
                 return;
             }
-        },Duration.seconds(144));
+        },Duration.seconds(143));
     }
 
     @Override

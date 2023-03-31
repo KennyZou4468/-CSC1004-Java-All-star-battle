@@ -20,16 +20,24 @@ import java.util.List;
 
 public class EggScene extends SubScene {
     private final  PauseTransition pt;
-    /*private LocalTimer localTimer;*/
+    private Main_menu mainMenu=new Main_menu();
     public EggScene(){
-        Text text=new Text("你竟然击杀了鸡！！等待坤坤的惩罚吧！");
+        Text text=new Text("你竟然击杀坤哥最爱的鸡！！等待坤坤的惩罚吧！");
+        text.setY(0);
         text.setFill(Color.WHITE);
         text.setFont(Font.font(35));
         StackPane pane=new StackPane(text);
+        Text newtext=new Text("但是鉴于你输入了我家坤坤正确的生日，坤坤决定给予你一些超能力在惩罚中");
+        if(mainMenu.IsIkun()){
+            newtext.setY(120);
+            newtext.setFill(Color.YELLOW);
+            newtext.setFont(Font.font(35));
+            pane=new StackPane(text,newtext);
+        }
         pane.setPrefSize(FXGL.getAppWidth(),FXGL.getAppHeight());
         pane.setStyle("-fx-background-color:black");
         getContentRoot().getChildren().add(pane);
-        pt=new PauseTransition(Duration.seconds(2));
+        pt=new PauseTransition(Duration.seconds(5));
         pt.setOnFinished(event->{
             FXGL.getSceneService().popSubScene();
             FXGL.<AllStarBattleApp>getAppCast().StartHiddenLevel();
@@ -42,11 +50,4 @@ public class EggScene extends SubScene {
         pt.play();
         FXGL.play("chicken.mp3");
     }
-
-    @Override
-    public void onExitingTo(@NotNull Scene nextState) {
-        super.onExitingTo(nextState);
-
-    }
-
 }
