@@ -8,6 +8,7 @@ import com.almasb.fxgl.time.LocalTimer;
 import javafx.util.Duration;
 
 public class PortalEffect extends Effect {
+    //穿墙效果
     private Texture texture;
     public PortalEffect() {
         super(Duration.seconds(10));
@@ -16,6 +17,7 @@ public class PortalEffect extends Effect {
 
     @Override
     public void onStart( Entity entity) {
+        //动画
         texture.setTranslateX(entity.getWidth()/2.0-texture.getWidth()/2.0);
         texture.setTranslateY(entity.getHeight()/2.0-texture.getHeight()/2.0);
         entity.getViewComponent().addChild(texture);

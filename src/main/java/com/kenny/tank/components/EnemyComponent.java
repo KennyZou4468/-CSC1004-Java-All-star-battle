@@ -26,6 +26,7 @@ public class EnemyComponent extends Component {
 
     @Override
     public void onUpdate(double tpf) {
+        //随时获取方向，并且随机移动
         Dir enemymove =tankComponent.getMoveDir2();
         if(FXGLMath.randomBoolean(0.015)){
             enemymove=FXGLMath.random(Dir.values()).get();

@@ -14,6 +14,7 @@ import javafx.util.Duration;
 
 public class ChickenComponent extends Component {
 // 小鸡组件，进行序列帧的播放
+    //导入坦克组件进行移动
     private TankComponent tankComponent;
     private Dir chickenmovedir=Dir.DOWN;
     private AnimationChannel acUP,acDOWN,acLEFT,acRIGHT;

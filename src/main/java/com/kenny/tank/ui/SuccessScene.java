@@ -13,12 +13,12 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class SuccessScene extends SubScene {
+    //普通场景获胜的ui
     private LocalTimer localTimer;
     private final  PauseTransition pt;
     private int score=FXGL.geti("score");
 
     public SuccessScene(){
-
         Text text=new Text("Score: "+score);
         text.setFill(Color.BLACK);
         text.setFont(Font.font(35));
@@ -28,6 +28,7 @@ public class SuccessScene extends SubScene {
         getContentRoot().getChildren().add(pane);
         pt=new PauseTransition(Duration.seconds(1.5));
         pt.setOnFinished(event->{
+            //检查是否到下一关
             if(FXGL.geti("level")< Config.Max_Level){
                 FXGL.getSceneService().popSubScene();
                 FXGL.inc("level",1);

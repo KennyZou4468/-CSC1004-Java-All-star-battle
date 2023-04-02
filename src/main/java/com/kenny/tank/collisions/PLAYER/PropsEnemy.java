@@ -74,5 +74,4 @@ public class PropsEnemy extends CollisionHandler {
         }
         props.removeFromWorld();
     }
-
 }

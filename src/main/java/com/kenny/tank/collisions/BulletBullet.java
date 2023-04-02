@@ -14,7 +14,7 @@ public class BulletBullet extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet1, Entity bullet2) {
-                  //相碰消除
+                  //相碰消除子弹
         Gametype b1 = bullet1.getObject("ownerType");
         Gametype b2 = bullet2.getObject("ownerType");
         if (b1 != b2) {

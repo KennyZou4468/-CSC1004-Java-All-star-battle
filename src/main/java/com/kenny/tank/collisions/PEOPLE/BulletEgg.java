@@ -19,7 +19,8 @@ public class BulletEgg extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity egg) {
-                  Gametype a=bullet.getObject("ownerType");
+        //获取子弹的发出者类型，判断后当碰撞时产生爆炸并且移除蛋
+        Gametype a=bullet.getObject("ownerType");
                   if(a.equals(Gametype.PLAYER2)||a.equals(Gametype.PEOPLE)) {
                       spawn("explode", egg.getCenter()
                               .subtract(80, 100));

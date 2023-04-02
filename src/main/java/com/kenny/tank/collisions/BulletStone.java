@@ -15,7 +15,7 @@ public class BulletStone extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity stone) {
-                  //需打多次才能摧毁
+                  //需打多次才能摧毁，无需升级
                   HealthIntComponent HP= stone.getComponent(HealthIntComponent.class);
                   HP.damage(1);
                   if(HP.isZero()){

@@ -17,7 +17,7 @@ public class BulletUnbreakablewall extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity unbreakablewall) {
-                  //需提升等级才能摧毁，同样需要打多次
+                  //需提升等级才能摧毁，同样需要打多次才能移除
         HealthIntComponent HP=unbreakablewall.getComponent(HealthIntComponent.class);
                   int level= bullet.getInt("level");
         spawn("smallexplode",unbreakablewall.getCenter()

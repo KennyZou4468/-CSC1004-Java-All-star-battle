@@ -25,7 +25,6 @@ public class PropsEnemy_forPeople extends CollisionHandler {
     protected void onCollisionBegin(Entity props, Entity enemy) {
         PropsType p1=props.getObject("propsType");
         switch (p1){
-            //升级道具，BOSS加血
             case LUCKYBLOCK -> {
                 //幸运方块，可能产生敌人也可能给玩家恢复血量
                 if(FXGLMath.random(0,1)<0.65){
@@ -53,10 +52,6 @@ public class PropsEnemy_forPeople extends CollisionHandler {
                         }
                     }
                 });
-            }
-            case PORTAL -> {
-// 变身穿墙坦克
-                    enemy.getComponent(EffectComponent.class).startEffect(new PortalEffect());
             }
             case GOD -> {
 //无敌效果

@@ -14,6 +14,7 @@ public class BulletCaseblock extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity caseblock) {
+                  //最容易打破的方块
                       caseblock.removeFromWorld();
         spawn("smallexplode",caseblock.getCenter()
                 .subtract(35,80));

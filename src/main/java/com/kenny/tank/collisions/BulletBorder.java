@@ -5,7 +5,7 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import com.kenny.tank.Gametype;
 
 public class BulletBorder extends CollisionHandler {
-    //子弹和边界的碰撞
+    //子弹和边界的碰撞，直接移除
               public BulletBorder(){
                   super(Gametype.BUllet,Gametype.BORDER);
               }

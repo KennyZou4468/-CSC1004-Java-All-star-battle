@@ -16,7 +16,6 @@ public class BulletPlayer extends CollisionHandler {
               public BulletPlayer(){
                   super(Gametype.BUllet,Gametype.PLAYER2);
               }
-
     @Override
     protected void onCollisionBegin(Entity bullet, Entity PLAYER2) {
                   //检查是否有无敌效果
@@ -30,6 +29,7 @@ public class BulletPlayer extends CollisionHandler {
             HP.damage(1);
             spawn("explode", PLAYER2.getCenter()
                     .subtract(80, 100));
+            //没血则游戏失败
             if (HP.isZero()) {
                 PLAYER2.removeFromWorld();
                 spawn("explode", PLAYER2.getCenter()

@@ -29,7 +29,7 @@ public class BulletBoss extends CollisionHandler {
         if(b1.equals(Gametype.ENEMY)){
             HP.restore(1);
         }else {
-            //玩家坦克造成伤害
+            //玩家坦克造成伤害，如果BOSS没血了即胜利
             HP.damage(1);
             spawn("explode", boss.getCenter()
                     .subtract(80, 100));

@@ -15,7 +15,7 @@ public class BulletWall extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity wall) {
-                  //需要打多次才能摧毁
+                  //需要打多次才能摧毁，无需等级限制
         HealthIntComponent HP=wall.getComponent(HealthIntComponent.class);
         HP.damage(1);
         Gametype b1=bullet.getObject("ownerType");

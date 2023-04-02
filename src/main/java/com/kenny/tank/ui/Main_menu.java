@@ -21,6 +21,7 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 public class Main_menu extends FXGLMenu {
+    //主菜单类，包含login system
     private final TranslateTransition tt;
     private final Pane defaultPane;
     private boolean iscorrect=false;
@@ -30,6 +31,7 @@ public class Main_menu extends FXGLMenu {
 
 
     private boolean verify(String username, String password) {
+        //检查数据库和输入的账号密码
         JdbcUtils jdbcUtils = new JdbcUtils();
         jdbcUtils.getConnection();
         String sql = "select count(1) count from `user` where username = ? and password = ?";
@@ -49,6 +51,7 @@ public class Main_menu extends FXGLMenu {
 
 
     public Main_menu() {
+        //设置主菜单
         super(MenuType.MAIN_MENU);
        Texture texture= FXGL.texture("MainMenu.png");
         Text text=new Text("All Star Battle");
@@ -76,7 +79,7 @@ public class Main_menu extends FXGLMenu {
         vBox.setLayoutY(500);
         vBox.setVisible(false);
 
-
+        //设置登陆按钮，界面
         VBox loginBox = new VBox(25);//登录VBOX
         loginBox.setAlignment(Pos.CENTER_LEFT);
         loginBox.setLayoutX(1024);
@@ -108,6 +111,7 @@ public class Main_menu extends FXGLMenu {
         loginBtn.setLayoutY(500);
         loginBtn.setOnAction(event -> {
             if (verify(loginBoxUsername.getText(), loginBoxPassword.getText())) {
+                //如果认证成功，可进入游戏
                 loginBox.setVisible(false);
                 vBox.setVisible(true);
                 iscorrect=true;
@@ -145,6 +149,7 @@ public class Main_menu extends FXGLMenu {
     }
 
     public  boolean IsIkun(){
+        //检查是否是ikun
         if(Username.equals("Ikun")){
             return true;
         }

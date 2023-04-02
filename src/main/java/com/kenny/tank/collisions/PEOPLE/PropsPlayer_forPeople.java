@@ -21,7 +21,7 @@ public class PropsPlayer_forPeople extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity props, Entity player) {
-        //道具和坦克的碰撞
+        //主人物获得道具
         PropsType_forHiddenLevel p1=props.getObject("props2Type");
         switch (p1){
             case LUCKYBLOCK-> {

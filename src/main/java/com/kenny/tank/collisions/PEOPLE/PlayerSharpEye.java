@@ -21,7 +21,7 @@ public class PlayerSharpEye extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity sharpeye, Entity PLAYER2) {
-                  //检查是否有无敌效果
+                  //检查是否有无敌效果，你是否为爱坤。若是，则无敌。
         boolean a = PLAYER2.getComponent(EffectComponent.class).hasEffect(GODEffect.class);
         if (!a&& !mainMenu.IsIkun()) {
             //减少血量

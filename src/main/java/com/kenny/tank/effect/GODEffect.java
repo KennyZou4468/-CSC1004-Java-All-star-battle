@@ -9,6 +9,7 @@ import com.almasb.fxgl.texture.Texture;
 import javafx.util.Duration;
 
 public class GODEffect extends Effect {
+    //无敌效果
     private AnimatedTexture texture;
     public GODEffect() {
         super(Duration.seconds(12));
@@ -18,6 +19,7 @@ public class GODEffect extends Effect {
 
     @Override
     public void onStart( Entity entity) {
+        //动画
         texture.setTranslateX(entity.getWidth()/2.0-texture.getFitWidth()/2.0);
         texture.setTranslateY(entity.getHeight()/2.0-texture.getFitHeight()/2.0);
         texture.loop();

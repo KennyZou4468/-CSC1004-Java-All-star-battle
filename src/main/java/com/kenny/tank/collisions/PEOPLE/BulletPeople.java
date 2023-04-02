@@ -28,8 +28,7 @@ public class BulletPeople extends CollisionHandler {
         }else {
             System.out.println(8);
         }*/
-
-                  //检查是否有无敌效果
+                  //检查是否有无敌效果，你是否为爱坤。若是，则无敌。
         boolean a = people.getComponent(EffectComponent.class).hasEffect(GODEffect.class);
         if (a|| mainMenu.IsIkun()) {
             bullet.removeFromWorld();

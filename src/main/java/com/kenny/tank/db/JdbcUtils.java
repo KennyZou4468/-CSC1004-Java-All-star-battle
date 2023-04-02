@@ -4,20 +4,23 @@ import java.sql.*;
 import java.util.List;
 
 public class JdbcUtils {
+    //自己数据库的用户名
     private static final String USER_NAME = "root";
 
     /**
      * Notation：
      * add your password in following line
      */
+    //自己数据库的密码
     private static final String PASSWORD = "HUSkenny6587&";
-
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     /**
      * Notation：
      * modify following URL
      */
+
+    //自己的URL（更改“?allow...”之前的为数据库名称即可）
     private static final String URL = "jdbc:mysql://localhost:3306/cs1004?allowPublicKeyRetrieval=true&useSSL=false&characterEncoding=utf-8";
 
 

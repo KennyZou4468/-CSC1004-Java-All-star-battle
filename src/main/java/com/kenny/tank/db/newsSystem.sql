@@ -36,6 +36,9 @@ CREATE TABLE `user` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `user` VALUES (1, 'gcx', '123');
+INSERT INTO `user` VALUES (2, 'Kenny', '2');
+INSERT INTO `user` VALUES (3, 'Ikun', '1998.8.2');
+
 COMMIT;
 
 

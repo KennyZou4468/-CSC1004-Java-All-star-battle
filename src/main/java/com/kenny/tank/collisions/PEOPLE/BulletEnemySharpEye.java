@@ -14,6 +14,7 @@ public class BulletEnemySharpEye extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity bullet, Entity sharpeye) {
+        //当碰撞时产生爆炸并且移除敌人（可能产生友伤）
             spawn("explode", sharpeye.getCenter()
                     .subtract(80, 100));
             bullet.removeFromWorld();

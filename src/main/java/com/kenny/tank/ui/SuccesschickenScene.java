@@ -18,7 +18,7 @@ public class SuccesschickenScene extends SubScene {
     private int score=FXGL.geti("score");
 
     public SuccesschickenScene(){
-
+        //成功在隐藏关卡存活场景
         Text text=new Text("Score: "+score);
         text.setFill(Color.BLACK);
         text.setFont(Font.font(35));

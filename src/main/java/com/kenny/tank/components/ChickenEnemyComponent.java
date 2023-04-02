@@ -19,7 +19,7 @@ import javafx.util.Duration;
 import java.util.List;
 
 public class ChickenEnemyComponent extends Component {
-// 小鸡组件，进行序列帧的播放
+// 小鸡敌人组件，进行序列帧的播放
     private TankComponent tankComponent;
     private Dir chickenmovedir=Dir.DOWN;
     private AnimationChannel acUP,acDOWN,acLEFT,acRIGHT;
@@ -92,6 +92,7 @@ public class ChickenEnemyComponent extends Component {
     }
 
     public void egg(){
+        //产生鸡蛋方法
         Point2D a=entity.getCenter();
         List<Entity> entities=FXGL.getGameWorld().getEntitiesInRange(new Rectangle2D(a.getX(),a.getY(),64,64));
         List<Entity> entityList=entities.stream().filter(entity->

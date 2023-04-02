@@ -14,7 +14,7 @@ import com.kenny.tank.effect.GODEffect;
 import com.kenny.tank.effect.PortalEffect;
 
 public class PropsPlayer extends CollisionHandler {
-
+//玩家获得道具
     public PropsPlayer() {
         super(Gametype.PROPS,Gametype.PLAYER2);
     }

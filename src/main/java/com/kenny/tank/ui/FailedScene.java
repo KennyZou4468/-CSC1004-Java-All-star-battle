@@ -12,6 +12,7 @@ public class FailedScene extends SubScene {
        private  TranslateTransition a;
        private Texture texture;
     public FailedScene() {
+        //弹出死亡界面
        texture= FXGL.texture("Suicide.png");
        texture.setLayoutX(32*64/2-texture.getWidth()/2);
        texture.setLayoutY(FXGL.getAppHeight());
@@ -20,6 +21,7 @@ public class FailedScene extends SubScene {
         a.setFromY(0);
         a.setToY(-FXGL.getAppHeight());
         a.setOnFinished(event->{
+            //回到主菜单
             FXGL.getSceneService().popSubScene();
             texture.setTranslateY(0);
             FXGL.getGameController().gotoMainMenu();

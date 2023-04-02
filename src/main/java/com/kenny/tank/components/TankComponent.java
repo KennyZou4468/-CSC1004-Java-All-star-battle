@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import java.util.List;
 
 public class TankComponent extends Component {
+    //坦克组件（重要）
 
     private boolean ismoving2=false;
     private double distance;
@@ -25,6 +26,7 @@ public class TankComponent extends Component {
     private LocalTimer TankTimer;
     private EffectComponent effectComponent;
 
+    //获取方向
     public Dir getMoveDir2() {
         return moveDir2;
     }
@@ -68,10 +70,12 @@ public class TankComponent extends Component {
         distance=tpf * Config.SpeedTank;
     }
 
+    //坦克移动方法
     public void move(){
         int len=(int) distance;
         boolean a= effectComponent.hasEffect(PortalEffect.class);
         List<Entity> blockList;
+        //判断实体类型赋予不同的Entity Group来进行移动
         if(entity.isType(Gametype.CHICKENENEMY)){
             blockList=chickenGroupLazyValue.get().getEntitiesCopy();
         } else if (entity.isType(Gametype.ENEMYEYE)||entity.isType(Gametype.SHARPEYE)) {
@@ -84,10 +88,12 @@ public class TankComponent extends Component {
                 blockList = entityGroupLazyValue.get().getEntitiesCopy();
             }
         }
+        //移除实体本身
         blockList.remove(entity);
         int size=blockList.size();
         boolean isCollision=false;
         for (int i = 0; i < len; i++) {
+            //利用方向向量进行移动
             entity.translate(moveDir2.getVector().getX(),moveDir2.getVector().getY());
            for(int j=0;j<size;j++){
               if( entity.isColliding(blockList.get(j))){
@@ -96,12 +102,13 @@ public class TankComponent extends Component {
               }
            }
            if(isCollision){
+               //如果移动后碰撞，则退回此距离
                entity.translate(-moveDir2.getVector().getX(),-moveDir2.getVector().getY());
                break;
            }
         }
     }
-
+    //move。。为坦克的移动方法
     public  void moveUp(){
         if(ismoving2){
             return;
@@ -142,6 +149,7 @@ public class TankComponent extends Component {
         move();
 
     }
+    //move。。1为敌人的移动方法
     public  void moveUp1(){
         if(ismoving2){
             return;
@@ -182,6 +190,7 @@ public class TankComponent extends Component {
 
 
     public  void shoot(){
+        //坦克射击方法
     if(TankTimer.elapsed(Config.Tankshoot)){
         FXGL.spawn("bullet",new SpawnData(
                 entity.getCenter().subtract(18,25/2.0)

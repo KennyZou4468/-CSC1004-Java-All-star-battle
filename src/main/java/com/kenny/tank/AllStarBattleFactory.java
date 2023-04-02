@@ -21,6 +21,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+
+//此类用于存储所有可能出现的Entity，不一一阐述。
 public class AllStarBattleFactory implements EntityFactory {
     // 坦克敌人
     @Spawns("enemy1")

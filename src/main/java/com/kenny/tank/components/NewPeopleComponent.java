@@ -15,7 +15,7 @@ import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 
 public class NewPeopleComponent extends Component {
-// 人组件，进行序列帧的播放
+// 隐藏关卡人组件，进行序列帧的播放
     private TankComponent tankComponent;
     private Dir peopledir=Dir.DOWN;
     private AnimationChannel acUP,acDOWN,acLEFT,acRIGHT;
