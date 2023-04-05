@@ -42,7 +42,6 @@ public class AllStarBattleApp extends GameApplication {
         gameSettings.setAppIcon("joker.jpg");
         gameSettings.getCSSList().add("tank.css");
         gameSettings.setMainMenuEnabled(true);
-
         gameSettings.setSceneFactory(new SceneFactory(){
             //自定义场景（替代原有的过场UI）
             @Override
@@ -79,6 +78,9 @@ public class AllStarBattleApp extends GameApplication {
         vars.put("level",1);
     }
     public void StartLevel(){
+        getGameWorld().getEntitiesByType(
+                Gametype.ENEMY,Gametype.PLAYER2,Gametype.BUllet
+        ).forEach(Entity::removeFromWorld);
         //开始正常关卡的方法，固定点产生敌人
         set("score",0);
         setLevelFromMap("test"+geti("level")+".tmx");

@@ -117,6 +117,7 @@ public class Main_menu extends FXGLMenu {
                 iscorrect=true;
                 System.out.println("Welcome, "+Username);
                 System.out.println("Your password is "+Password);
+                    FXGL.getNotificationService().pushNotification("Welcome, "+Username);
             } else {
                 loginBoxLabel.setText("Incorrect username or password.");
             }

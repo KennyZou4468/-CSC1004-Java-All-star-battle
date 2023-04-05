@@ -8,8 +8,8 @@ public interface Config {
     int SpeedTank=380;
     int SpeedBullet=750;
     int Speedenemybullet=1000;
-    Duration Tankshoot= Duration.seconds(1.5);
-    Duration peoplegood= Duration.seconds(1);
+    Duration Tankshoot= Duration.seconds(1.4);
+    Duration peoplegood= Duration.seconds(0.8);
     Duration enemy2shooot=Duration.seconds(0.75);
     Duration spawnegg=Duration.seconds(5);
     Duration eggbreak=Duration.seconds(6);

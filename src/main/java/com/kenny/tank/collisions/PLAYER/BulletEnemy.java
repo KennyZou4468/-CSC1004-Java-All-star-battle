@@ -8,8 +8,7 @@ import com.kenny.tank.Gametype;
 import com.kenny.tank.effect.GODEffect;
 import javafx.geometry.Rectangle2D;
 
-import static com.almasb.fxgl.dsl.FXGL.inc;
-import static com.almasb.fxgl.dsl.FXGL.spawn;
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class BulletEnemy extends CollisionHandler {
     //子弹和敌人的碰撞
@@ -23,7 +22,6 @@ public class BulletEnemy extends CollisionHandler {
                   boolean a=enemy.getComponent(EffectComponent.class).hasEffect(GODEffect.class);
        if(a){
            bullet.removeFromWorld();
-           return;
        }
        else {spawn("explode", enemy.getCenter()
                .subtract(80, 100));

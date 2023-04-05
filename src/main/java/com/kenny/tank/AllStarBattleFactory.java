@@ -302,7 +302,7 @@ public class AllStarBattleFactory implements EntityFactory {
     }
     @Spawns("Good")
     public Entity good(SpawnData data){
-        FXGL.play("boom.wav");
+        FXGL.play("JI (1).wav");
         Point2D direction=data.get("dir");
         CollidableComponent collidableComponent=new CollidableComponent(true);
         collidableComponent.addIgnoredType(data.<Gametype>get("ownerType"));
@@ -354,7 +354,7 @@ public class AllStarBattleFactory implements EntityFactory {
        data.put("propsType",propsType);
        return FXGL.entityBuilder(data)
                 .type(Gametype.PROPS)
-                .viewWithBBox("Props/"+propsType.toString()+".png")
+                .viewWithBBox("Props/"+ propsType +".png")
                .with(new ExpireCleanComponent(Duration.seconds(15)))
                 .collidable()
                 .zIndex(12)
