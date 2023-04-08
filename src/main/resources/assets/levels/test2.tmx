@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="321">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="342">
  <tileset firstgid="1" name="Combination" tilewidth="64" tileheight="64" tilecount="16" columns="4">
   <image source="Combination.png" width="288" height="288"/>
  </tileset>
@@ -124,21 +124,16 @@
   <object id="224" type="Stoneblock" gid="3" x="1856" y="640" width="64" height="64"/>
   <object id="225" type="Stoneblock" gid="3" x="1408" y="320" width="64" height="64"/>
   <object id="226" type="Stoneblock" gid="3" x="1472" y="320" width="64" height="64"/>
-  <object id="227" type="Stoneblock" gid="3" x="896" y="640" width="64" height="64"/>
-  <object id="228" type="Stoneblock" gid="3" x="960" y="640" width="64" height="64"/>
-  <object id="229" type="Stoneblock" gid="3" x="960" y="704" width="64" height="64"/>
-  <object id="230" type="Stoneblock" gid="3" x="896" y="704" width="64" height="64"/>
+  <object id="227" type="Stoneblock" gid="3" x="128" y="384" width="64" height="64"/>
+  <object id="228" type="Stoneblock" gid="3" x="192" y="384" width="64" height="64"/>
+  <object id="229" type="Stoneblock" gid="3" x="192" y="448" width="64" height="64"/>
+  <object id="230" type="Stoneblock" gid="3" x="128" y="448" width="64" height="64"/>
   <object id="236" type="Stoneblock" gid="3" x="512" y="192" width="64" height="64"/>
   <object id="237" type="Stoneblock" gid="3" x="448" y="128" width="64" height="64"/>
   <object id="238" type="Stoneblock" gid="3" x="576" y="320" width="64" height="64"/>
   <object id="239" type="Stoneblock" gid="3" x="576" y="256" width="64" height="64"/>
   <object id="240" type="Stoneblock" gid="3" x="576" y="64" width="64" height="64"/>
   <object id="249" type="Unbreakablewall" gid="2147483649" x="320" y="256" width="64" height="64"/>
-  <object id="250" type="Unbreakablewall" gid="2147483649" x="256" y="320" width="64" height="64"/>
-  <object id="251" type="Unbreakablewall" gid="2147483649" x="192" y="320" width="64" height="64"/>
-  <object id="252" type="Unbreakablewall" gid="2147483649" x="128" y="320" width="64" height="64"/>
-  <object id="253" type="Unbreakablewall" gid="2147483649" x="64" y="320" width="64" height="64"/>
-  <object id="254" type="Unbreakablewall" gid="2147483649" x="0" y="320" width="64" height="64"/>
   <object id="256" type="Caseblock" gid="5" x="640" y="1152" width="64" height="64"/>
   <object id="257" type="Caseblock" gid="5" x="832" y="448" width="64" height="64"/>
   <object id="271" type="Caseblock" gid="5" x="1344" y="128" width="64" height="64"/>
@@ -175,7 +170,6 @@
   <object id="309" type="Caseblock" gid="5" x="1280" y="896" width="64" height="64"/>
   <object id="310" type="Caseblock" gid="5" x="1216" y="896" width="64" height="64"/>
   <object id="311" type="Caseblock" gid="5" x="1216" y="960" width="64" height="64"/>
-  <object id="312" type="Caseblock" gid="5" x="1664" y="832" width="64" height="64"/>
   <object id="313" type="Caseblock" gid="5" x="1728" y="896" width="64" height="64"/>
   <object id="314" type="Caseblock" gid="5" x="1728" y="960" width="64" height="64"/>
   <object id="315" type="Caseblock" gid="5" x="1600" y="1024" width="64" height="64"/>
@@ -184,5 +178,14 @@
   <object id="318" type="Caseblock" gid="5" x="1664" y="1024" width="64" height="64"/>
   <object id="319" type="Caseblock" gid="5" x="1728" y="832" width="64" height="64"/>
   <object id="320" type="Caseblock" gid="5" x="1792" y="832" width="64" height="64"/>
+  <object id="333" type="Caseblock" gid="5" x="896" y="704" width="64" height="64"/>
+  <object id="334" type="Caseblock" gid="5" x="896" y="768" width="64" height="64"/>
+  <object id="335" type="Caseblock" gid="5" x="960" y="768" width="64" height="64"/>
+  <object id="336" type="Caseblock" gid="5" x="960" y="704" width="64" height="64"/>
+  <object id="337" type="Caseblock" gid="5" x="1024" y="640" width="64" height="64"/>
+  <object id="338" type="Caseblock" gid="5" x="1024" y="704" width="64" height="64"/>
+  <object id="339" type="Caseblock" gid="5" x="1536" y="512" width="64" height="64"/>
+  <object id="340" type="Caseblock" gid="5" x="1600" y="512" width="64" height="64"/>
+  <object id="341" type="Caseblock" gid="5" x="1664" y="512" width="64" height="64"/>
  </objectgroup>
 </map>

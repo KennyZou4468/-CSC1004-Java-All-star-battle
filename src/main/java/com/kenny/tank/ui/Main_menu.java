@@ -59,6 +59,14 @@ public class Main_menu extends FXGLMenu {
         text.setX(924);
         text.setY(150);
 
+
+        Text text1=new Text("你是ikun吗？试试坤坤的生日");
+        text1.setFont(Font.font(50));
+        text1.setX(924);
+        text1.setY(200);
+
+
+
         Button button1=new Button("Start new game");
         button1.getStyleClass().add("menu_button1");
         button1.setOnAction(event->{
@@ -82,8 +90,8 @@ public class Main_menu extends FXGLMenu {
         //设置登陆按钮，界面
         VBox loginBox = new VBox(25);//登录VBOX
         loginBox.setAlignment(Pos.CENTER_LEFT);
-        loginBox.setLayoutX(1024);
-        loginBox.setLayoutY(800);
+        loginBox.setLayoutX(1500);
+        loginBox.setLayoutY(750);
         loginBox.setVisible(true);
 
         TextField loginBoxUsername = new TextField();//登录VBOX用户名
@@ -144,8 +152,8 @@ public class Main_menu extends FXGLMenu {
         tt.setToX(374);
         tt.setToY(252);
         tt.setOnFinished(e -> loginBox.setVisible(true));
-        getContentRoot().getChildren().addAll(texture,vBox,text);
-        defaultPane=new Pane(texture,loginBox,vBox);
+        getContentRoot().getChildren().addAll(texture,vBox,text,text1);
+        defaultPane=new Pane(texture,loginBox,vBox,text,text1);
         getContentRoot().getChildren().setAll(defaultPane);
     }
 

@@ -29,9 +29,6 @@ public class PlayerSharpEye extends CollisionHandler {
             HP.damage(1);
             if (HP.isZero()) {
                 PLAYER2.removeFromWorld();
-                spawn("explode", PLAYER2.getCenter()
-                        .subtract(80, 100));
-                PLAYER2.removeFromWorld();
                 FXGL.getSceneService().pushSubScene(new FailedScene());
             }
         }

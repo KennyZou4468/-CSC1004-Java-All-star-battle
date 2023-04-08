@@ -19,7 +19,7 @@ public class SuccesschickenScene extends SubScene {
 
     public SuccesschickenScene(){
         //成功在隐藏关卡存活场景
-        Text text=new Text("Score: "+score);
+        Text text=new Text("你一共击杀了 "+score+"个鸡和鸡蛋");
         text.setFill(Color.BLACK);
         text.setFont(Font.font(35));
         StackPane pane=new StackPane(text);
