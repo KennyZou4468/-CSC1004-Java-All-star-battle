@@ -8,19 +8,22 @@ import com.almasb.fxgl.physics.CollisionHandler;
 import com.kenny.tank.Gametype;
 import com.kenny.tank.effect.GODEffect;
 import com.kenny.tank.ui.FailedScene;
+import com.kenny.tank.ui.Main_menu;
 
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
 public class BulletPlayer extends CollisionHandler {
+    private Main_menu mainMenu=new Main_menu();
     //子弹和玩家的碰撞
               public BulletPlayer(){
                   super(Gametype.BUllet,Gametype.PLAYER2);
               }
     @Override
     protected void onCollisionBegin(Entity bullet, Entity PLAYER2) {
+
                   //检查是否有无敌效果
         boolean a = PLAYER2.getComponent(EffectComponent.class).hasEffect(GODEffect.class);
-        if (a) {
+        if (a|| mainMenu.IsBigbrother()) {
             bullet.removeFromWorld();
             return;
         } else {

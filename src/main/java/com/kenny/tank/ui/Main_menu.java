@@ -166,6 +166,14 @@ public class Main_menu extends FXGLMenu {
             return false;
         }
     }
+    public boolean IsBigbrother(){
+        if(Username.equals("于瑞涵")||Username.equals("邱俊文")){
+            return true;
+        }
+        else {
+            return  false ;
+        }
+    }
 
 
 
