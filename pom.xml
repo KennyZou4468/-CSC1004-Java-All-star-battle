@@ -49,10 +49,10 @@
                     <compress>2</compress>
                     <noHeaderFiles>true</noHeaderFiles>
                     <noManPages>true</noManPages>
-                    <launcher>tank</launcher>
-                    <jlinkImageName>tank</jlinkImageName>
-                    <jlinkZipName>tankZip</jlinkZipName>
-                    <mainClass>com.kenny.tank.AllStarBattleApp</mainClass>
+                    <launcher>All_star_battle</launcher>
+                    <jlinkImageName>All_star_battle</jlinkImageName>
+                    <jlinkZipName>All_star_battleZip</jlinkZipName>
+                    <mainClass>com.kenny.AllStarBattle.AllStarBattleApp</mainClass>
                 </configuration>
             </plugin>
 
