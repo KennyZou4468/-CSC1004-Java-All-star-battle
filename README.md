@@ -6,6 +6,36 @@ Under the folder :src/main/java/com/kenny/AllStarBattle, there are main
 Classes and packages. Among all, AllStarBattleApp is the main class to
 run this game.
 
+
+How to run it:
+1.Make sure you have installed package:FXGL
+2.Make sure you can connect to database.
+ In the class "JdbcUtils.java", here are some mark to you. You need to change PASSWORD to your
+own database's password,as well as your USER_NAME. After that, look at URL. There is something 
+like "jdbc:mysql://localhost:3306/cs1004?allowPublicKeyRetrieval...",replace "cs1004" with your
+database's name. As a result, you can connect your database.
+3. Open "com.kenny.AllStarBattle.AllStarBattleApp". This is the main function where you can run the whole game.
+4. You can also try to play the game by running "out/artifacts/tank_jar/tank.jar"
+
+
+
+
+
+
+Main features:
+        (1). Different entities and attacking methods. 
+    We achieve this by using the key class "TankComponent" to enable player and enemy to move freely.
+        (2). Customed pictures, sound,UI.
+    Using PNG file and javafx, fxgl to replace the origional textures. UI is included in UIpackage.
+        (3). Random enemy and props.
+    Using random 2D position to achieve. Props will have effect to entity who "eat" them.you can find 
+    how to achieve that by checking "PropsPlayer"class in collision package in detail.
+        (4). Some cool modes
+    I leave some Easter egg in the game to show respect to my classmates&friends, as well as one famous singer(hhhh).
+    You can find them by checking database and during playing(kill chicken firstly)
+
+Some more detailed description to packages:
+
 1. AllStarBattleApp: we firstly initialize the game, like Width and Height,
 Title... Then we customize our scene by creating SceneFactory. By override onPreInit,
 we can add music to the game. There are two start level methods: Start normal level and 

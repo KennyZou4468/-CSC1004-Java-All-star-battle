@@ -1,5 +1,4 @@
 package com.kenny.AllStarBattle;
-
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
@@ -67,8 +66,6 @@ public class AllStarBattleApp extends GameApplication {
      //设置音乐
         FXGL.getSettings().setGlobalMusicVolume(0.5);
         FXGL.getSettings().setGlobalSoundVolume(0.8);
-
-
     }
     @Override
     protected void initGameVars(Map<String, Object> vars) {
