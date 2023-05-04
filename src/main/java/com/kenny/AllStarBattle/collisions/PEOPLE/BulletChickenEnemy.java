@@ -23,7 +23,7 @@ public class BulletChickenEnemy extends CollisionHandler {
                     .subtract(80, 100));
             bullet.removeFromWorld();
             chickenenemy.removeFromWorld();
-            inc("score",1);
+            inc("kill",1);
         }
         else {
             bullet.removeFromWorld();

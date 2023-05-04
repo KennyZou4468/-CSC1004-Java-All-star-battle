@@ -25,7 +25,7 @@ public class BulletEgg extends CollisionHandler {
                     bullet.removeFromWorld();
            egg.removeFromWorld();
             //得分加一
-           inc("score",1);
+           inc("kill",1);
            spawn("Props2",
                    FXGLMath.randomPoint(new Rectangle2D(
                            0, 0, 32 * 64 - 100, 18 * 64 - 100

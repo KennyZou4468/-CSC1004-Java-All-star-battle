@@ -13,7 +13,7 @@ import javafx.util.Duration;
 public class SuccesschickenScene extends SubScene {
     private LocalTimer localTimer;
     private final  PauseTransition pt;
-    private int score=FXGL.geti("score");
+    private int score=FXGL.geti("kill");
 
     public SuccesschickenScene(){
         //成功在隐藏关卡存活场景

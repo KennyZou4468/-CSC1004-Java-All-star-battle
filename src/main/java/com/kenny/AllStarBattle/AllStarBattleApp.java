@@ -73,6 +73,7 @@ public class AllStarBattleApp extends GameApplication {
         vars.put("score",0);
         vars.put("Name","");
         vars.put("level",1);
+        vars.put("kill",0);
     }
     public void StartLevel(){
         getGameWorld().getEntitiesByType(
@@ -107,6 +108,7 @@ public class AllStarBattleApp extends GameApplication {
     public void StartHiddenLevel(){
         //开始隐藏关卡的方法
         set("score",0);
+        set("kill",0);
         setLevelFromMap("Chicken.tmx");
         spawn("ChickenEnemy",125,381);
         player2=FXGL.spawn("people",1900,1012)
@@ -122,7 +124,7 @@ public class AllStarBattleApp extends GameApplication {
             if(entities.isEmpty()){
                 spawn("ChickenEnemy",b);
             }
-        }, Duration.seconds(4),70);
+        }, Duration.seconds(5),70);
         //当玩家存活过原曲结束（144秒），胜利
         runOnce(()->{
             LazyValue<SuccesschickenScene> successchickenSceneLazyValue = new LazyValue<>(SuccesschickenScene::new);
